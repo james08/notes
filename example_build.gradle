@@ -1,0 +1,28 @@
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'biz.aQute.bnd:biz.aQute.bnd.gradle:3.5.0'
+  }
+}
+
+apply plugin : 'java'
+apply plugin : 'application'
+apply plugin : 'biz.aQute.bnd.builder'
+mainClassName = 'GreeterApp'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation 'com.github.lalyos:jfiglet:0.0.8'
+}
+
+jar {
+    manifest {
+        attributes('Export-Package': '*')
+        attributes('Import-Package': '*')
+    }
+}
