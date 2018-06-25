@@ -27,3 +27,13 @@ _Hypermedia As The Engine Of Application State_
 For example, a simple REST request containing a bank account number might return a list of links to all possible options for that account, withdraw, deposit, close, etc. If the account is overdrawn, only one option would be returned - deposit.
 
 In my experience we've used this principle with Analytics reports where we tailor links for options on a report. For example we would only return a filter link for each distinct value in the result set. Therefore we would be returning options representative of the current state.
+
+### Design Patterns
+#### Chain of Responsibility
+#### Command
+#### Iterator
+#### Observer
+#### Strategy
+#### Visitor
+#### Composite
+#### 
