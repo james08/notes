@@ -27,3 +27,6 @@ kubectl edit -f webserver.yaml
 ## URLS
 Get all api endpoints: http://localhost:8001/#!/namespace?namespace=default  
 Get deployments: http://localhost:8001/apis/apps/v1/deployments
+
+## References
+https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.10/#-strong-write-operations-strong-
