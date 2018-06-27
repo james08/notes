@@ -87,6 +87,12 @@ The spec is where you tell K8s what you want. Some fields are mantatory, some ar
 
 The status is where Kubernetes tells you where its at.
 
+OBJECT FIELDS:
+  apiVersion
+  kind
+  metadata
+  spec
+
 OBJECT MANAGEMENT
 
 Declarative object configuration - updates only what's changed, thereby retaining other users' changes.
@@ -105,3 +111,17 @@ Get deployments: http://localhost:8001/apis/apps/v1/deployments
 
 ## References
 https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.10/#-strong-write-operations-strong-
+
+https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md#objects
+
+https://kubernetes.io/docs/tasks/access-kubernetes-api/extend-api-custom-resource-definitions/
+
+https://kubernetes.io/docs/tasks/access-kubernetes-api/setup-extension-api-server/
+
+https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/
+
+https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/
+
+https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.10/#-strong-write-operations-strong--20
+
+https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/
