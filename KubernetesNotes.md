@@ -17,7 +17,67 @@ How do you use an object?
 
 ## Speech
 _slide 1..3_  
-Seeing as K8s uses API objects to do pretty much... everything.
+
+I'm going to start by using minikube to start a basic local k8s cluster to play with.
+
+The primary method of interacting with the Kubernetes cluster is via the API.
+
+
+A resource is an endpoint in the Kubernetes API that stores a collection of API objects of a certain kind. For example, the built-in pods resource contains a collection of Pod objects. Here is an example which also illustrates the api self discovery feature.
+
+
+_give example_
+
+http://localhost:8001/apis/apps/v1/deployments
+
+go to selfLink
+
+Objects are stored as resources located via the API endpoint. For example you may hit an endpoint and get a response that says 'No resource found'
+
+
+Demo of object creation and status change:
+
+```bash
+watch -n 0.5 curl -i 'http://localhost:8001/apis/apps/v1/namespaces/default/deployments/deployment-example | grep -E "(spec|status)" -A 10'
+```
+
+```bash
+echo 'apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: deployment-example
+spec:
+  replicas: 3
+  revisionHistoryLimit: 10
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.10
+        ports:
+        - containerPort: 80
+' | kubectl create -f -
+```
+
+
+```bash
+$ minikube status
+minikube: Running
+cluster: Running
+kubectl: Correctly Configured: pointing to minikube-vm at 192.168.99.100
+```
+
+```bash
+$ kubectl proxy
+Starting to serve on 127.0.0.1:8001
+```
+
+http://localhost:8001/api/v1/pods
+
+http://localhost:8001/api/v1/namespaces/default/pods/liveness-exec
 
 This is what an API object looks like. Typically a yaml file
 
@@ -26,6 +86,10 @@ Two main parts. Spec and Status.
 The spec is where you tell K8s what you want. Some fields are mantatory, some are optional, some are added by K8s.
 
 The status is where Kubernetes tells you where its at.
+
+OBJECT MANAGEMENT
+
+Declarative object configuration - updates only what's changed, thereby retaining other users' changes.
 
 
 ## Commands
